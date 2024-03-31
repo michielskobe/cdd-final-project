@@ -58,17 +58,25 @@ module design_1_uart_top_0_0 (
   iClk,
   iRst,
   iRx,
-  oTx
+  oTx,
+  ind_op1,
+  ind_op2,
+  ind_sol,
+  ind_idle
 );
 
 input wire iClk;
 input wire iRst;
 input wire iRx;
 output wire oTx;
+output wire ind_op1;
+output wire ind_op2;
+output wire ind_sol;
+output wire ind_idle;
 
   uart_top #(
     .OPERAND_WIDTH(512),
-    .ADDER_WIDTH(16),
+    .ADDER_WIDTH(64),
     .NBYTES(64),
     .CLK_FREQ(125000000),
     .BAUD_RATE(115200)
@@ -76,6 +84,10 @@ output wire oTx;
     .iClk(iClk),
     .iRst(iRst),
     .iRx(iRx),
-    .oTx(oTx)
+    .oTx(oTx),
+    .ind_op1(ind_op1),
+    .ind_op2(ind_op2),
+    .ind_sol(ind_sol),
+    .ind_idle(ind_idle)
   );
 endmodule

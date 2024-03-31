@@ -71,8 +71,8 @@ module mp_adder #(
     wire [ADDER_WIDTH-1:0]  result;
     wire                    carry_out;
 
-    ripple_carry_adder_Nb #( .ADDER_WIDTH(ADDER_WIDTH) ) 
-    ripple_carry_inst   (
+    uniform_carry_select_adder #( .ADDER_WIDTH(ADDER_WIDTH) ) 
+    ucsa_inst   (
         .iA( operandA ), 
         .iB( operandB ),
         .iCarry( carry_in ),

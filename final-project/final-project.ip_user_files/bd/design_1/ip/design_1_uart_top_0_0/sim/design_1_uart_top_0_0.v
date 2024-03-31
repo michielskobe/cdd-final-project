@@ -47,30 +47,35 @@
 // DO NOT MODIFY THIS FILE.
 
 
-// IP VLNV: xilinx.com:module_ref:Debounce_Switch:1.0
+// IP VLNV: xilinx.com:module_ref:uart_top:1.0
 // IP Revision: 1
 
 `timescale 1ns/1ps
 
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
-module design_1_Debounce_Switch_0_0 (
-  i_Clk,
-  i_Switch,
-  o_Switch
+module design_1_uart_top_0_0 (
+  iClk,
+  iRst,
+  iRx,
+  oTx
 );
 
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME i_Clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN design_1_iClk, INSERT_VIP 0" *)
-(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 i_Clk CLK" *)
-input wire i_Clk;
-input wire i_Switch;
-output wire o_Switch;
+input wire iClk;
+input wire iRst;
+input wire iRx;
+output wire oTx;
 
-  Debounce_Switch #(
-    .c_DEBOUNCE_LIMIT(250000)
+  uart_top #(
+    .OPERAND_WIDTH(512),
+    .ADDER_WIDTH(16),
+    .NBYTES(64),
+    .CLK_FREQ(125000000),
+    .BAUD_RATE(115200)
   ) inst (
-    .i_Clk(i_Clk),
-    .i_Switch(i_Switch),
-    .o_Switch(o_Switch)
+    .iClk(iClk),
+    .iRst(iRst),
+    .iRx(iRx),
+    .oTx(oTx)
   );
 endmodule

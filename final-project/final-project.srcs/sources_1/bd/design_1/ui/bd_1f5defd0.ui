@@ -1,23 +1,31 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"1.25",
-   "Default View_TopLeft":"-206,-54",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"-357,-153",
    "ExpandedHierarchyInLayout":"",
-   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:9.0 non-TLS
+   "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:9.0 TLS
 #  -string -flagsOSRD
-preplace port iClk -pg 1 -lvl 0 -x 0 -y 20 -defaultsOSRD
-preplace port iRst -pg 1 -lvl 0 -x 0 -y 90 -defaultsOSRD
-preplace port iRx -pg 1 -lvl 0 -x 0 -y 150 -defaultsOSRD
-preplace port oTx -pg 1 -lvl 3 -x 440 -y 80 -defaultsOSRD
-preplace inst Debounce_Switch_0 -pg 1 -lvl 1 -x 130 -y 80 -defaultsOSRD
+preplace port iClk -pg 1 -lvl 0 -x -30 -y 20 -defaultsOSRD
+preplace port iRst -pg 1 -lvl 0 -x -30 -y 90 -defaultsOSRD
+preplace port iRx -pg 1 -lvl 0 -x -30 -y 150 -defaultsOSRD
+preplace port oTx -pg 1 -lvl 3 -x 470 -y 0 -defaultsOSRD
+preplace port ind_op1 -pg 1 -lvl 3 -x 470 -y 30 -defaultsOSRD
+preplace port ind_op2 -pg 1 -lvl 3 -x 470 -y 60 -defaultsOSRD
+preplace port ind_sol -pg 1 -lvl 3 -x 470 -y 90 -defaultsOSRD
+preplace port ind_idle -pg 1 -lvl 3 -x 470 -y 120 -defaultsOSRD
+preplace inst Debounce_Switch_0 -pg 1 -lvl 1 -x 110 -y 80 -defaultsOSRD
 preplace inst uart_top_0 -pg 1 -lvl 2 -x 330 -y 80 -defaultsOSRD
 preplace netloc Debounce_Switch_0_o_Switch 1 1 1 N 80
-preplace netloc i_Clk_0_1 1 0 2 20 10 240J
+preplace netloc i_Clk_0_1 1 0 2 -10 10 220J
 preplace netloc i_Switch_0_1 1 0 1 NJ 90
-preplace netloc iRx_0_1 1 0 2 NJ 150 240J
-preplace netloc uart_top_0_oTx 1 2 1 N 80
-levelinfo -pg 1 0 130 330 440
-pagesize -pg 1 -db -bbox -sgen -80 0 520 170
+preplace netloc iRx_0_1 1 0 2 NJ 150 220J
+preplace netloc uart_top_0_oTx 1 2 1 430 0n
+preplace netloc uart_top_0_ind_op1 1 2 1 440 30n
+preplace netloc uart_top_0_ind_op2 1 2 1 450 60n
+preplace netloc uart_top_0_ind_sol 1 2 1 440 90n
+preplace netloc uart_top_0_ind_idle 1 2 1 N 120
+levelinfo -pg 1 -30 110 330 470
+pagesize -pg 1 -db -bbox -sgen -110 -20 580 180
 "
 }
-
+0

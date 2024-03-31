@@ -2,7 +2,7 @@
 
 module uart_top #(
     parameter   OPERAND_WIDTH = 512,
-    parameter   ADDER_WIDTH   = 16,
+    parameter   ADDER_WIDTH   = 64,
     parameter   NBYTES        = OPERAND_WIDTH / 8,    
     // values for the UART (in case we want to change them)
     parameter   CLK_FREQ      = 125_000_000,
@@ -11,12 +11,18 @@ module uart_top #(
   (
     input   wire   iClk, iRst,
     input   wire   iRx,
-    output  wire   oTx
+    output  wire   oTx,
+    output  wire   ind_op1,
+    output  wire   ind_op2,
+    output  wire   ind_sol,
+    output  wire   ind_idle
   );
   
   // Buffer to exchange data between Pynq-Z2 and laptop
   reg [NBYTES*8-1:0] rA;
   reg [NBYTES*8-1:0] rB;
+
+  reg r_op1, r_op2, r_sol, r_idle;
 
   
   // State definition  
@@ -94,6 +100,10 @@ MP_ADDR_INST
       rB <= 0;
       rAddrStart <= 0;
       rRes <= 0;
+      r_idle <= 1;
+      r_op1 <= 1;
+      r_op2 <= 1;
+      r_sol <= 1;
     end 
   else 
     begin
@@ -101,12 +111,20 @@ MP_ADDR_INST
    
         s_IDLE :
           begin
+            r_idle <= 1;
+            r_op1 <= 0;
+            r_op2 <= 0;
+            r_sol <= 0;
             
             rFSM <= s_WAIT_RX;
           end
           
         s_WAIT_RX :
           begin
+            r_idle <= 1;
+            r_op1 <= 0;
+            r_op2 <= 0;
+            r_sol <= 0;
             if (rCnt < 2*NBYTES) 
                 begin
                 rRes <= rRes;
@@ -117,6 +135,10 @@ MP_ADDR_INST
                             begin
                                 rA <= {rA[NBYTES*8-9:0], wRxByte};
                                 rCnt <= rCnt +1;
+                                r_idle <= 0;
+                                r_op1 <= 1;
+                                r_op2 <= 0;
+                                r_sol <= 0;
                             end
                         else
                             begin
@@ -132,6 +154,10 @@ MP_ADDR_INST
                             begin
                                 rB <= {rB[NBYTES*8-9:0], wRxByte};
                                 rCnt <= rCnt +1;
+                                r_idle <= 0;
+                                r_op1 <= 1;
+                                r_op2 <= 1;
+                                r_sol <= 0;
                             end
                         else
                             begin
@@ -157,6 +183,10 @@ MP_ADDR_INST
                                     rRes <= {7'b000_0000, wRes[OPERAND_WIDTH+1-1:0]};
                                     rFSM <= s_TX;
                                     rCnt <= 0;
+                                    r_idle <= 0;
+                                    r_op1 <= 1;
+                                    r_op2 <= 1;
+                                    r_sol <= 1;
                                 end
                             else
                                 begin
@@ -210,4 +240,8 @@ MP_ADDR_INST
       end
     end       
     
+  assign ind_idle = r_idle;
+  assign ind_op1  = r_op1;
+  assign ind_op2  = r_op2;
+  assign ind_sol  = r_sol;
 endmodule

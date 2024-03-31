@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xB71FD90B08D8A505",
+      "boundary_crc": "0xA4B1F023221764F1",
       "device": "xc7z020clg400-1",
       "name": "design_1",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
@@ -19,7 +19,7 @@
         "direction": "I",
         "parameters": {
           "CLK_DOMAIN": {
-            "value": "design_1_i_Clk_0",
+            "value": "design_1_iClk",
             "value_src": "default"
           },
           "FREQ_HZ": {
@@ -48,6 +48,18 @@
       },
       "oTx": {
         "direction": "O"
+      },
+      "ind_op1": {
+        "direction": "O"
+      },
+      "ind_op2": {
+        "direction": "O"
+      },
+      "ind_sol": {
+        "direction": "O"
+      },
+      "ind_idle": {
+        "direction": "O"
       }
     },
     "components": {
@@ -65,7 +77,7 @@
             "direction": "I",
             "parameters": {
               "CLK_DOMAIN": {
-                "value": "design_1_i_Clk_0",
+                "value": "design_1_iClk",
                 "value_src": "default_prop"
               }
             }
@@ -91,7 +103,7 @@
             "direction": "I",
             "parameters": {
               "CLK_DOMAIN": {
-                "value": "design_1_i_Clk_0",
+                "value": "design_1_iClk",
                 "value_src": "default_prop"
               },
               "FREQ_HZ": {
@@ -111,6 +123,18 @@
             "direction": "I"
           },
           "oTx": {
+            "direction": "O"
+          },
+          "ind_op1": {
+            "direction": "O"
+          },
+          "ind_op2": {
+            "direction": "O"
+          },
+          "ind_sol": {
+            "direction": "O"
+          },
+          "ind_idle": {
             "direction": "O"
           }
         }
@@ -146,6 +170,30 @@
         "ports": [
           "uart_top_0/oTx",
           "oTx"
+        ]
+      },
+      "uart_top_0_ind_op1": {
+        "ports": [
+          "uart_top_0/ind_op1",
+          "ind_op1"
+        ]
+      },
+      "uart_top_0_ind_op2": {
+        "ports": [
+          "uart_top_0/ind_op2",
+          "ind_op2"
+        ]
+      },
+      "uart_top_0_ind_sol": {
+        "ports": [
+          "uart_top_0/ind_sol",
+          "ind_sol"
+        ]
+      },
+      "uart_top_0_ind_idle": {
+        "ports": [
+          "uart_top_0/ind_idle",
+          "ind_idle"
         ]
       }
     }

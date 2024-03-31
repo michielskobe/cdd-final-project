@@ -168,6 +168,10 @@ proc create_root_design { parentCell } {
   set iClk [ create_bd_port -dir I -type clk iClk ]
   set iRst [ create_bd_port -dir I iRst ]
   set iRx [ create_bd_port -dir I iRx ]
+  set ind_idle [ create_bd_port -dir O ind_idle ]
+  set ind_op1 [ create_bd_port -dir O ind_op1 ]
+  set ind_op2 [ create_bd_port -dir O ind_op2 ]
+  set ind_sol [ create_bd_port -dir O ind_sol ]
   set oTx [ create_bd_port -dir O oTx ]
 
   # Create instance: Debounce_Switch_0, and set properties
@@ -197,6 +201,10 @@ proc create_root_design { parentCell } {
   connect_bd_net -net iRx_0_1 [get_bd_ports iRx] [get_bd_pins uart_top_0/iRx]
   connect_bd_net -net i_Clk_0_1 [get_bd_ports iClk] [get_bd_pins Debounce_Switch_0/i_Clk] [get_bd_pins uart_top_0/iClk]
   connect_bd_net -net i_Switch_0_1 [get_bd_ports iRst] [get_bd_pins Debounce_Switch_0/i_Switch]
+  connect_bd_net -net uart_top_0_ind_idle [get_bd_ports ind_idle] [get_bd_pins uart_top_0/ind_idle]
+  connect_bd_net -net uart_top_0_ind_op1 [get_bd_ports ind_op1] [get_bd_pins uart_top_0/ind_op1]
+  connect_bd_net -net uart_top_0_ind_op2 [get_bd_ports ind_op2] [get_bd_pins uart_top_0/ind_op2]
+  connect_bd_net -net uart_top_0_ind_sol [get_bd_ports ind_sol] [get_bd_pins uart_top_0/ind_sol]
   connect_bd_net -net uart_top_0_oTx [get_bd_ports oTx] [get_bd_pins uart_top_0/oTx]
 
   # Create address segments
