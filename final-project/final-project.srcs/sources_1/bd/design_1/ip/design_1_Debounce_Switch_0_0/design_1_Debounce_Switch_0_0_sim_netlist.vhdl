@@ -1,10 +1,10 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
--- Date        : Sat Mar 30 22:00:50 2024
--- Host        : fedora running 64-bit Fedora release 38 (Thirty Eight)
+-- Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+-- Date        : Thu Apr 18 08:30:56 2024
+-- Host        : LAPTOP-OOSNLU21 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               /home/debber/Documents/__KuLeuven/GroepT/Fase3/Semester2/CDD/CDD-Final-Project/final-project/final-project.srcs/sources_1/bd/design_1/ip/design_1_Debounce_Switch_0_0/design_1_Debounce_Switch_0_0_sim_netlist.vhdl
+--               c:/Users/kobem/Documents/KULeuven/CDD/CDD-Labs/CDD-Final-Project/final-project/final-project.srcs/sources_1/bd/design_1/ip/design_1_Debounce_Switch_0_0/design_1_Debounce_Switch_0_0_sim_netlist.vhdl
 -- Design      : design_1_Debounce_Switch_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
