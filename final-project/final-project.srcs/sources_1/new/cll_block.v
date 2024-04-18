@@ -21,7 +21,7 @@
 
 
 module cll_block #(
-    parameter BLOCK_SIZE = 3
+    parameter BLOCK_SIZE = 4
     )
     (
     input wire [BLOCK_SIZE-1:0] iP, iG,
@@ -46,7 +46,11 @@ module cll_block #(
             always@(*)
             begin
                 if (i == 1)
-                    rAndBit[i] <= iCarry;
+                    begin
+                        if (BLOCK_SIZE == 1)
+                            rAndBit[i-1] = 0;
+                        rAndBit[i] <= iCarry;
+                    end
                 else
                     rAndBit[i] <= iG[i-2];
                 rOrInput[i] = &iP[BLOCK_SIZE-1:(i-1)]&rAndBit[i];
