@@ -1,8 +1,8 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
-//Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-//Date        : Thu Apr 18 08:38:30 2024
-//Host        : LAPTOP-OOSNLU21 running 64-bit major release  (build 9200)
+//Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
+//Date        : Fri Apr 19 11:56:38 2024
+//Host        : fedora running 64-bit Fedora release 38 (Thirty Eight)
 //Command     : generate_target design_1.bd
 //Design      : design_1
 //Purpose     : IP block netlist

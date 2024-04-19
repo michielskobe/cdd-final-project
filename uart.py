@@ -6,7 +6,7 @@ ports = list(serial.tools.list_ports.comports())
 for p in ports:
     print(p)
 
-ser = serial.Serial('/dev/ttyUSB0', 115200, timeout=10)
+ser = serial.Serial('/dev/ttyUSB2', 115200, timeout=10)
 runs = 0
 correct = 0
 

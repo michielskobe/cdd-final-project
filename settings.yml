@@ -1,0 +1,7 @@
+adder:
+  width: 128
+  start_block: 3
+  start_repetition: 2
+  max_block_width: 16
+  block_size_increment: 2
+

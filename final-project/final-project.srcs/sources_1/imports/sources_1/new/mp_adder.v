@@ -71,7 +71,7 @@ module mp_adder #(
     wire [ADDER_WIDTH-1:0]  result;
     wire                    carry_out;
 
-    uniform_carry_select_adder #( .ADDER_WIDTH(ADDER_WIDTH) ) 
+    variable_carry_select_adder
     ucsa_inst   (
         .iA( operandA ), 
         .iB( operandB ),

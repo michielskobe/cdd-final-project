@@ -1,10 +1,10 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
--- Date        : Thu Apr 18 08:39:18 2024
--- Host        : LAPTOP-OOSNLU21 running 64-bit major release  (build 9200)
+-- Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
+-- Date        : Fri Apr 19 11:57:49 2024
+-- Host        : fedora running 64-bit Fedora release 38 (Thirty Eight)
 -- Command     : write_vhdl -force -mode synth_stub
---               c:/Users/kobem/Documents/KULeuven/CDD/CDD-Labs/CDD-Final-Project/final-project/final-project.srcs/sources_1/bd/design_1/ip/design_1_uart_top_0_0/design_1_uart_top_0_0_stub.vhdl
+--               /home/debber/Documents/__KuLeuven/GroepT/Fase3/Semester2/CDD/CDD-Final-Project/final-project/final-project.srcs/sources_1/bd/design_1/ip/design_1_uart_top_0_0/design_1_uart_top_0_0_stub.vhdl
 -- Design      : design_1_uart_top_0_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7z020clg400-1
