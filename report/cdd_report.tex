@@ -46,8 +46,6 @@
 \begin{document}
 
 \maketitle
-\section{Introduction}
-
 \section{Features}
 
 % A summary of the features of your final project. For the mandatory assignment, you should provide the maximum ADDER_WIDTH tolerated by your design and the number of cycles your design requires to complete a 512-bit addition. If you have completed any of the optional assignments, make sure to summarize them as well in this part.
@@ -93,13 +91,16 @@ In the end we ended up with a configuration as seen in figure \ref{fig:128bit-ad
 
 % A performance evaluation of your arithmetic designs, including their worst-case delays (as detailed by Vivado in the post-synthesis report) and the area costs (as detailed by Vivado in the post-synthesis utilization report). 
 
-The performance evaluation of our arithmetic design for an ADDER\_WIDTH of 128 bits consists of an evaluation of the worst-case delay and the area costs. We will firstly generate a post-synthesis Timing Summary to understand if the design met the timing constraints. This Timing Summary is visible on Figure \ref{fig:timing-128-bit}. We get a Worst Negative Slack (WNS) of 0.707 ns. Since this is a positive value, we can conclude that there are no timing errors during synthesis.
+The performance evaluation of our arithmetic design for an ADDER\_WIDTH of 128 bits consists of an evaluation of the worst-case delay and the area costs. We will firstly generate a post-synthesis Timing Summary to understand if the design met the timing constraints. This Timing Summary is visible on figure \ref{fig:timing-128-bit}. We get a Worst Negative Slack (WNS) of 0.707 ns. Since this is a positive value, we can conclude that there are no timing errors during synthesis.
 \\\\
-The Intra-Clock Paths in the Timing Report allow us to form a conclusion about the worst case delay. Using the values from Figure \ref{fig:paths-128-bit}, we can calculate the worst-case delay as the sum of the logic and net delays of the worst path: 1.749 ns + 5.408 ns = 7.157 ns.
-\\\\
-We can also evaluate the number of clock cycles needed for our addition. The latency of this operation is determined by the division of OPERAND\_WIDTH by ADDER\_WIDTH): OPERAND\_WIDTH/ADDER\_WIDTH = 512/128 = 4 clock cycles.
-\\\\
-To evaluate the area costs of our design, we take a look at the post-synthesis utilization report on Figure \ref{fig:utilization-128-bit}. We can see that there are 1608 LUTs and 3219 FFs.  
+The Intra-Clock Paths in the Timing Report allow us to form a conclusion about the worst case delay. Using the values from figure \ref{fig:paths-128-bit}, we can calculate the worst-case delay as the sum of the logic and net delays of the worst path: 1.749 ns + 5.408 ns = 7.157 ns.
+\\
+We can also evaluate the number of clock cycles needed for our addition. The latency of this operation is determined by the division of OPERAND\_WIDTH by ADDER\_WIDTH:
+\begin{equation}
+	OPERAND\_WIDTH/ADDER\_WIDTH = 512/128 = 4 \mathrm{\ clock\ cycles}
+\end{equation} 
+
+To evaluate the area costs of our design, we take a look at the post-synthesis utilization report on figure \ref{fig:utilization-128-bit}. We can see that there are 1608 LUTs and 3219 FFs.  
 
 \begin{figure}[h]
 	\centering
@@ -152,8 +153,6 @@ The latency of the operation of the reference design is equal to 32 clock cycles
 	\caption{Utilization report for ADDER\_WIDTH = 16}
 	\label{fig:utilization-16-bit}
 \end{figure}
-
-\section{Conclusion}
 
 \end{document}
 
