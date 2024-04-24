@@ -64,6 +64,8 @@ The performance evaluation of our arithmetic design for an ADDER\_WIDTH of 128 b
 \\\\
 The Intra-Clock Paths in the Timing Report allow us to form a conclusion about the worst case delay. Using the values from Figure \ref{fig:paths-128-bit}, we can calculate the worst-case delay as the sum of the logic and net delays of the worst path: 1.749 ns + 5.408 ns = 7.157 ns.
 \\\\
+We can also evaluate the number of clock cycles needed for our addition. The latency of this operation is determined by the division of OPERAND\_WIDTH by ADDER\_WIDTH): OPERAND\_WIDTH/ADDER\_WIDTH = 512/128 = 4 clock cycles.
+\\\\
 To evaluate the area costs of our design, we take a look at the post-synthesis utilization report on Figure \ref{fig:utilization-128-bit}. We can see that there are 1608 LUTs and 3219 FFs.  
 
 \begin{figure}[h]
@@ -90,6 +92,12 @@ To evaluate the area costs of our design, we take a look at the post-synthesis u
 \section{Comparison }
 
 % A comparison of the obtained performance metrics with respect to the original ones from Lab #3, that is, when MP ADDER uses the ripple_carry_adder_Nb with ADDER_WIDTH = 16. Discuss whether the obtained results (speed improvement and area increases) are in line with the expectations.
+
+The reference design from Lab \#3 with an ADDER\_WIDTH of 16 bits has a Worst Negative Slack of 2.651 ns (figure \ref{fig:timing-16-bit}). This is better then our design which has a WNS of 0.707 ns. The worst-case delay of the reference design is 5.213 ns (figure \ref{fig:paths-16-bit}). Our design has a higher one with a value of 7.157 ns. Our design also has a higher area cost, with 1608 LUTs opposed to 1433 LUTs for the reference design (figure \ref{fig:utilization-16-bit}). However, both designs utilize 3219 FFs. 
+\\\\
+The higher WNS, worst-case delay and area cost is something we expected. Like we can see on figure \ref{fig:128bit-adder}, our design consists of significantly more adders and multiplexers. This will lead to bigger area utilisation and longer paths. These longer paths are the reason for the higher worst-case delay.
+\\\\
+The latency of the operation of the reference design is equal to 32 clock cycles. This is 8 times more than the latency of our operation. This is also something we expected because our ADDER\_WIDTH is 8 times higher. This increase in ADDER\_WIDTH results in a decrease in iterations and hence, a decrease in clock cycles.
 
 \begin{figure}[h]
 	\centering
