@@ -60,9 +60,57 @@
 
 % A performance evaluation of your arithmetic designs, including their worst-case delays (as detailed by Vivado in the post-synthesis report) and the area costs (as detailed by Vivado in the post-synthesis utilization report). 
 
+The performance evaluation of our arithmetic design for an ADDER\_WIDTH of 128 bits consists of an evaluation of the worst-case delay and the area costs. We will firstly generate a post-synthesis Timing Summary to understand if the design met the timing constraints. This Timing Summary is visible on Figure \ref{fig:timing-128-bit}. We get a Worst Negative Slack (WNS) of 0.707 ns. Since this is a positive value, we can conclude that there are no timing errors during synthesis.
+\\\\
+The Intra-Clock Paths in the Timing Report allow us to form a conclusion about the worst case delay. Using the values from Figure \ref{fig:paths-128-bit}, we can calculate the worst-case delay as the sum of the logic and net delays of the worst path: 1.749 ns + 5.408 ns = 7.157 ns.
+\\\\
+To evaluate the area costs of our design, we take a look at the post-synthesis utilization report on Figure \ref{fig:utilization-128-bit}. We can see that there are 1608 LUTs and 3219 FFs.  
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.75\linewidth]{images/timing-128-bit.png}
+	\caption{Design Timing Summary for ADDER\_WIDTH = 128}
+	\label{fig:timing-128-bit}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.75\linewidth]{images/paths-128-bit.png}
+	\caption{Intra-Clock Paths for ADDER\_WIDTH = 128}
+	\label{fig:paths-128-bit}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.75\linewidth]{images/utilization-128-bit.png}
+	\caption{Utilization report for ADDER\_WIDTH = 128}
+	\label{fig:utilization-128-bit}
+\end{figure}
+
 \section{Comparison }
 
 % A comparison of the obtained performance metrics with respect to the original ones from Lab #3, that is, when MP ADDER uses the ripple_carry_adder_Nb with ADDER_WIDTH = 16. Discuss whether the obtained results (speed improvement and area increases) are in line with the expectations.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.75\linewidth]{images/timing-16-bit.png}
+	\caption{Design Timing Summary for ADDER\_WIDTH = 16}
+	\label{fig:timing-16-bit}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.75\linewidth]{images/paths-16-bit.png}
+	\caption{Intra-Clock Paths for ADDER\_WIDTH = 16}
+	\label{fig:paths-16-bit}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.75\linewidth]{images/utilization-16-bit.png}
+	\caption{Utilization report for ADDER\_WIDTH = 16}
+	\label{fig:utilization-16-bit}
+\end{figure}
 
 \section{Conclusion}
 
