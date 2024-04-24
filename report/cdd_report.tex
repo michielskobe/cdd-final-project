@@ -52,9 +52,42 @@
 
 % A summary of the features of your final project. For the mandatory assignment, you should provide the maximum ADDER_WIDTH tolerated by your design and the number of cycles your design requires to complete a 512-bit addition. If you have completed any of the optional assignments, make sure to summarize them as well in this part.
 
+\subsection{Carry Lookahead Adder (CLA)}
+
+We have a design for a CLA which synthesizes and implements for any amount of bits required by the design. Everything auto generates based of of the given adder width. We did not test the limit of this adder implementation, since the size of the adder increased substantially making it a bad choice for increasing our adder sizes. 
+
+\subsection{Uniform size Carry Select Adder (UCSA)}
+
+As with the CLA, our UCSA synthesizes and implements for any adder width required by a design. We do this by calculating the optimal amount of blocks and block widths at synthesis time. As was detailed in lecture \#3A, we make the block size equal to the square root of the adder width. This ensures the optimal usage of our logic and minimizes idle time. This adder can be set to 64 bit without issue, achieving timing closure about 7ns. When asking for 128 bit, we can not achieve timing closure within the required 8ns. Unfortunately we get a Worst Negative Slack (WNS) of -0.8ns. 
+
+\subsection{Variable size Carry Select Adder (VCSA)}
+
+The final adder we made, using the process described in section \ref{sec:tech_desc}, is able to achieve a 128 bit addition using a VCSA structure. It achieves this with a WNS of 0.7ns leaving some headroom in our timings. This reduces the required cycles for our mp\_adder to just 6 cycles, providing about a 5 times improvement compared to the reference design. 
+
+
+\newpage
 \section{Technical description}
+\label{sec:tech_desc}
 
 % A technical description of your main arithmetic designs in the final project. For the improved combinational adder, you should explain the strategy you have followed and provide a high-level diagram of the design. The diagram should be similar to the ones seen in the lectures. For the optional features, you should also provide an explanation and, if required for comprehension, a high-level diagram.
+
+The implementation of our 128 bit variable sized carry select adder follows the principles described in Lecture \#3A. We found however, that making a practical implementation of it was more difficult than expected. This is because there are a lot of variables at play which have an influence on the ability of the circuit to get timing closure. To this end, we wrote a python script (\texttt{variable\_generator.py}) which takes in a few settings (defined in \texttt{settings.yml}). This allowed us to make rapid iterations of our structure by tweaking just a few settings:
+\begin{description}
+	\item[adder.width] The width of the adder (128 bit)
+	\item[adder.start\_block] The width of the first ripple carry adder 
+	\item[adder.start\_repetition] How many times the width of the first block should be repeated before expanding the subsequent blocks
+	\item[adder.max\_block\_width] How wide should a block maximally be to prevent excessive fan-out. 
+	\item[adder.block\_size\_increment] How much should we increase the full adder count per block when increasing the block size
+\end{description}
+These parameters were chosen because we believe they give us good control over the critical path with respect to logic (amount of multiplexers) and propagation (fan-out) delays. \\
+\\
+In the end we ended up with a configuration as seen in figure \ref{fig:128bit-adder}. The specific performance is detailed in the following sections. 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\linewidth]{images/128bit-ADDER}
+	\caption{Schematic of the variable size carry select adder (N=128)}
+	\label{fig:128bit-adder}
+\end{figure}
 
 \section{Performance evaluation}
 
