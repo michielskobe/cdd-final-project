@@ -52,15 +52,20 @@
 
 \subsection{Carry Lookahead Adder (CLA)}
 
-We have a design for a CLA which synthesizes and implements for any amount of bits required by the design. Everything auto generates based of of the given adder width. We did not test the limit of this adder implementation, since the size of the adder increased substantially making it a bad choice for increasing our adder sizes. 
+We have a design for a CLA which synthesizes and implements for any amount of bits required by the design. Everything auto generates based of of the given adder width. We did not test the limit of this adder implementation, since the size of the adder increased substantially making it a bad choice for increasing our adder sizes when looking from an area saving perspective. There is potential for these adders to be integrated in our VCSA (see section \ref{sec:VCSA}), but due to a lack of time, this was not further investigated. Some experiments we performed however showed potential to reach a 256 bit adder. 
 
 \subsection{Uniform size Carry Select Adder (UCSA)}
 
 As with the CLA, our UCSA synthesizes and implements for any adder width required by a design. We do this by calculating the optimal amount of blocks and block widths at synthesis time. As was detailed in lecture \#3A, we make the block size equal to the square root of the adder width. This ensures the optimal usage of our logic and minimizes idle time. This adder can be set to 64 bit without issue, achieving timing closure about 7ns. When asking for 128 bit, we can not achieve timing closure within the required 8ns. Unfortunately we get a Worst Negative Slack (WNS) of -0.8ns. 
 
 \subsection{Variable size Carry Select Adder (VCSA)}
+\label{sec:VCSA}
 
 The final adder we made, using the process described in section \ref{sec:tech_desc}, is able to achieve a 128 bit addition using a VCSA structure. It achieves this with a WNS of 0.7ns leaving some headroom in our timings. This reduces the required cycles for our mp\_adder to just 6 cycles, providing about a 5 times improvement compared to the reference design. 
+
+\subsection{Status LED}
+
+We used the LEDs of the pynq board to indicate the status of our design. It is able to show the status of the UART transfers of operand A and B (using LED 1 and 2) and whether or not the addition has been made successfully. This allows for easy debugging because it shows clearly which step of the process has gone wrong. 
 
 
 \newpage
